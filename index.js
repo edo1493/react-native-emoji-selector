@@ -317,22 +317,17 @@ export default class EmojiSelector extends Component {
         <View style={{ flex: 1 }}>
           {showSearchBar && Searchbar}
           {isReady ? (
-            <View style={{ flex: 1 }}>
-              <View style={styles.container}>
-                {showSectionTitles && <Text style={styles.sectionHeader}>{title}</Text>}
-                <FlatList
-                  style={styles.scrollview}
-                  contentContainerStyle={{ paddingBottom: colSize }}
-                  data={this.returnSectionData()}
-                  renderItem={this.renderEmojiCell}
-                  horizontal={false}
-                  numColumns={columns}
-                  keyboardShouldPersistTaps={'always'}
-                  ref={scrollview => this.scrollview = scrollview}
-                  removeClippedSubviews
-                />
-              </View>
-            </View>
+            <FlatList
+              style={styles.scrollview}
+              contentContainerStyle={{ paddingBottom: colSize }}
+              data={this.returnSectionData()}
+              renderItem={this.renderEmojiCell}
+              horizontal={false}
+              numColumns={columns}
+              keyboardShouldPersistTaps={'always'}
+              ref={scrollview => this.scrollview = scrollview}
+              removeClippedSubviews
+            />
           ) : (
               <View style={styles.loader} {...other}>
                 <ActivityIndicator size={'large'} color={Platform.OS === 'android' ? theme : '#000000'} />
